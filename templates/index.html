@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune Housing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+            padding: 20px;
+            font-family: 'Arial', sans-serif; /* Typography */
+            color: #333; /* Typography */
+        }
+        .custom-input,
+        .custom-dropdown {
+            background-color: #f5f4ef; /* Custom Styling */
+            border: 1px solid #ddd; /* Custom Styling */
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px; /* Spacing */
+            width: 100%;
+        }
+        .custom-dropdown:focus,
+        .custom-input:focus {
+            outline: none; /* Custom Styling */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Custom Styling */
+        }
+        #submitBtn {
+            background-color: #75aaf5; /* Custom Styling */
+            color: #fbe7e7; /* Custom Styling */
+            border: none; /* Custom Styling */
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 20px; /* Spacing */
+            display: block; /* Whitespace */
+            margin: auto; /* Whitespace */
+            position: relative; /* Animation */
+            animation: pulse 2s infinite alternate; /* Animation */
+        }
+        #submitBtn:hover {
+            background-color: #c471ed; /* Custom Styling */
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card" style="width: 100%; margin-top: 50px; background-color: #f6eec1;">
+            <div class="card-header" style="text-align: center">
+                <h1>Enter Your Requirements <br>and Get a Price Prediction</h1>
+            </div>
+            <div class="card-body">
+                <form id="predictionForm" method="post" accept-charset="utf-8" >
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="location"><b>Select the location</b></label>
+                            <select class="custom-dropdown form-control" id="location" name="location" required="1">
+                                <option value="" disabled selected>Select Location</option>
+                                {% for location in locations %}
+                                    <option value="{{location}}">{{location}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="bhk"><b>Enter BHK</b></label>
+                            <input type="number" class="custom-input form-control" id="bhk" name="bhk" placeholder="Enter BHK">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="bath"><b>Enter number of bathrooms</b></label>
+                            <input type="number" class="custom-input form-control" id="bath" name="bath" placeholder="Enter number of bathrooms">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="balcony"><b>Enter number of balconies</b></label>
+                            <input type="number" class="custom-input form-control" id="balcony" name="balcony" placeholder="Enter number of balconies">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="total_sqft"><b>Enter Square Feet</b></label>
+                            <input type="number" class="custom-input form-control" id="total_sqft" name="total_sqft" placeholder="Enter Square Feet">
+                        </div>
+                        <div class="col-md-12 form-group text-center">
+                            <button id="submitBtn" type="submit" class="btn btn-primary">Predict Price</button> <br>
+                            <button id="resetBtn" type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <div class="col-md-12" style="text-align:center">
+                    <h3><span id="predictionResult"></span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div id="loadingSpinner" class="spinner-border text-primary" role="status" style="display: none;">
+  <span class="sr-only">Loading...</span>
+</div>
+
+<script>
+    document.getElementById("predictionForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var form = event.target;
+        var formData = new FormData(form);
+
+        // Show loading spinner
+        document.getElementById("loadingSpinner").style.display = "block";
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("predictionResult").innerText = "₹" + data;
+            // Hide loading spinner after prediction result is displayed
+            document.getElementById("loadingSpinner").style.display = "none";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Hide loading spinner if there's an error
+            document.getElementById("loadingSpinner").style.display = "none";
+        });
+    });
+</script>
+
+</body>
+</html>

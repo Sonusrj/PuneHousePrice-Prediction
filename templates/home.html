@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(248, 246, 246, 0.9);
+            color: #0e0d0d;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 50px; /* Adjust the width of the logo as needed */
+            margin-right: 10px; /* Add spacing between the logo and text */
+        }
+
+        header .logo h1 {
+            margin: 0;
+            font-weight: 700;
+            color: #333;
+        }
+
+        header .logo p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            font-weight: 300;
+            color: #110e0e;
+        }
+
+        header .company-name {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        header .company-name h1 {
+            margin: 0;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .cta-button {
+            padding: 12px 25px;
+            background-color: #fc837f;
+            color: #000000;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.9s, transform 0.2s;
+            font-weight: 400;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background-color: #40ff8f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            text-align: center;
+            padding: 20px;
+            background: #ffeec9cc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .feature {
+            display: inline-block;
+            width: 30%;
+            margin: 10px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h2 {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #666;
+            font-weight: 300;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #777;
+            margin-top: 20px;
+            font-size: 0.8em;
+        }
+
+        footer p {
+            margin: 10px;
+            color: #333;
+        }
+
+        footer a {
+            color: #027bfd;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header .logo {
+                text-align: center;
+            }
+
+            header .company-name {
+                display: none;
+            }
+
+            header {
+                padding: 10px;
+            }
+
+            .cta-button {
+                margin-top: 10px;
+            }
+
+            .feature {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/images/PricePredicto.png" alt="Logo">
+            <div>
+                <h1>House Price Predictor</h1>
+                <p>Find the perfect home for you</p>
+            </div>
+        </div>
+        <div class="cta-button">
+            <a href="/predict">Get Started</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature">
+                <h2>Advanced Search</h2>
+                <p>Search for properties based on various criteria such as price, location, size, and more.</p>
+            </div>
+            <div class="feature">
+                <h2>Accurate Predictions</h2>
+                <p>Get accurate price predictions using our advanced machine learning model.</p>
+            </div>
+            <div class="feature">
+                <h2>User-friendly Interface</h2>
+                <p>Our website is designed to be intuitive and easy to use, ensuring a seamless experience for all users.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 House Price Predictor. All rights reserved.</p>
+            <p>Follow us on:
+                <a href="https://x.com/seenu_kun" target="_blank">Twitter</a>
+                <a href="https://www.linkedin.com/in/sonu-saroj-0459b9243/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Sonusrj/PuneHouse-Price-Prediction" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
